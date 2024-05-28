@@ -97,7 +97,27 @@
 	"CMAKE_SOURCE_DIR" : "/home/sammy/workspace/SU-projekt/SU",
 	"DEP_FILE" : "",
 	"DEP_FILE_RULE_NAME" : "",
-	"HEADERS" : [],
+	"HEADERS" : 
+	[
+		[
+			"/home/sammy/workspace/SU-projekt/SU/database.h",
+			"MU",
+			"EWIEGA46WW/moc_database.cpp",
+			null
+		],
+		[
+			"/home/sammy/workspace/SU-projekt/SU/hero.h",
+			"MU",
+			"EWIEGA46WW/moc_hero.cpp",
+			null
+		],
+		[
+			"/home/sammy/workspace/SU-projekt/SU/include.h",
+			"MU",
+			"EWIEGA46WW/moc_include.cpp",
+			null
+		]
+	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
 	"INCLUDE_DIR" : "/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/SU_autogen/include",
 	"MOC_COMPILATION_FILE" : "/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/SU_autogen/mocs_compilation.cpp",
@@ -161,6 +181,9 @@
 	"SETTINGS_FILE" : "/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles/SU_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "/home/sammy/workspace/SU-projekt/SU/database.cpp", "MU", null ],
+		[ "/home/sammy/workspace/SU-projekt/SU/hero.cpp", "MU", null ],
+		[ "/home/sammy/workspace/SU-projekt/SU/include.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/main.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],

@@ -9,6 +9,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sammy/workspace/SU-projekt/SU/build/SU_autogen/mocs_compilation.cpp" "CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o" "gcc" "CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o.d"
+  "/home/sammy/workspace/SU-projekt/SU/database.cpp" "CMakeFiles/SU.dir/database.cpp.o" "gcc" "CMakeFiles/SU.dir/database.cpp.o.d"
+  "/home/sammy/workspace/SU-projekt/SU/hero.cpp" "CMakeFiles/SU.dir/hero.cpp.o" "gcc" "CMakeFiles/SU.dir/hero.cpp.o.d"
+  "/home/sammy/workspace/SU-projekt/SU/include.cpp" "CMakeFiles/SU.dir/include.cpp.o" "gcc" "CMakeFiles/SU.dir/include.cpp.o.d"
   "/home/sammy/workspace/SU-projekt/SU/main.cpp" "CMakeFiles/SU.dir/main.cpp.o" "gcc" "CMakeFiles/SU.dir/main.cpp.o.d"
   )
 

@@ -19,6 +19,9 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(SU
   main.cpp
+  include.h include.cpp
+  hero.h hero.cpp
+  database.h database.cpp
 
 )
 target_link_libraries(SU Qt${QT_VERSION_MAJOR}::Core)

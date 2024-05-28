@@ -97,16 +97,64 @@ CMakeFiles/SU.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SU.dir/main.cpp.s"
 	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sammy/workspace/SU-projekt/SU/main.cpp -o CMakeFiles/SU.dir/main.cpp.s
 
+CMakeFiles/SU.dir/include.cpp.o: CMakeFiles/SU.dir/flags.make
+CMakeFiles/SU.dir/include.cpp.o: ../../include.cpp
+CMakeFiles/SU.dir/include.cpp.o: CMakeFiles/SU.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/SU.dir/include.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SU.dir/include.cpp.o -MF CMakeFiles/SU.dir/include.cpp.o.d -o CMakeFiles/SU.dir/include.cpp.o -c /home/sammy/workspace/SU-projekt/SU/include.cpp
+
+CMakeFiles/SU.dir/include.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SU.dir/include.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sammy/workspace/SU-projekt/SU/include.cpp > CMakeFiles/SU.dir/include.cpp.i
+
+CMakeFiles/SU.dir/include.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SU.dir/include.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sammy/workspace/SU-projekt/SU/include.cpp -o CMakeFiles/SU.dir/include.cpp.s
+
+CMakeFiles/SU.dir/hero.cpp.o: CMakeFiles/SU.dir/flags.make
+CMakeFiles/SU.dir/hero.cpp.o: ../../hero.cpp
+CMakeFiles/SU.dir/hero.cpp.o: CMakeFiles/SU.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/SU.dir/hero.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SU.dir/hero.cpp.o -MF CMakeFiles/SU.dir/hero.cpp.o.d -o CMakeFiles/SU.dir/hero.cpp.o -c /home/sammy/workspace/SU-projekt/SU/hero.cpp
+
+CMakeFiles/SU.dir/hero.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SU.dir/hero.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sammy/workspace/SU-projekt/SU/hero.cpp > CMakeFiles/SU.dir/hero.cpp.i
+
+CMakeFiles/SU.dir/hero.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SU.dir/hero.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sammy/workspace/SU-projekt/SU/hero.cpp -o CMakeFiles/SU.dir/hero.cpp.s
+
+CMakeFiles/SU.dir/database.cpp.o: CMakeFiles/SU.dir/flags.make
+CMakeFiles/SU.dir/database.cpp.o: ../../database.cpp
+CMakeFiles/SU.dir/database.cpp.o: CMakeFiles/SU.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/SU.dir/database.cpp.o"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/SU.dir/database.cpp.o -MF CMakeFiles/SU.dir/database.cpp.o.d -o CMakeFiles/SU.dir/database.cpp.o -c /home/sammy/workspace/SU-projekt/SU/database.cpp
+
+CMakeFiles/SU.dir/database.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/SU.dir/database.cpp.i"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sammy/workspace/SU-projekt/SU/database.cpp > CMakeFiles/SU.dir/database.cpp.i
+
+CMakeFiles/SU.dir/database.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/SU.dir/database.cpp.s"
+	/usr/bin/x86_64-linux-gnu-g++-11 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sammy/workspace/SU-projekt/SU/database.cpp -o CMakeFiles/SU.dir/database.cpp.s
+
 # Object files for target SU
 SU_OBJECTS = \
 "CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o" \
-"CMakeFiles/SU.dir/main.cpp.o"
+"CMakeFiles/SU.dir/main.cpp.o" \
+"CMakeFiles/SU.dir/include.cpp.o" \
+"CMakeFiles/SU.dir/hero.cpp.o" \
+"CMakeFiles/SU.dir/database.cpp.o"
 
 # External object files for target SU
 SU_EXTERNAL_OBJECTS =
 
 SU: CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o
 SU: CMakeFiles/SU.dir/main.cpp.o
+SU: CMakeFiles/SU.dir/include.cpp.o
+SU: CMakeFiles/SU.dir/hero.cpp.o
+SU: CMakeFiles/SU.dir/database.cpp.o
 SU: CMakeFiles/SU.dir/build.make
 SU: /usr/lib/x86_64-linux-gnu/libQt5Quick.so.5.15.3
 SU: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3
@@ -116,7 +164,7 @@ SU: /usr/lib/x86_64-linux-gnu/libQt5Network.so.5.15.3
 SU: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3
 SU: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3
 SU: CMakeFiles/SU.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SU"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable SU"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/SU.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

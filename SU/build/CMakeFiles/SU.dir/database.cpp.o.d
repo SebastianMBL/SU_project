@@ -1,5 +1,6 @@
-CMakeFiles/SU.dir/main.cpp.o: \
- /home/sammy/workspace/SU-projekt/SU/main.cpp /usr/include/stdc-predef.h \
+CMakeFiles/SU.dir/database.cpp.o: \
+ /home/sammy/workspace/SU-projekt/SU/database.cpp \
+ /usr/include/stdc-predef.h \
  /home/sammy/workspace/SU-projekt/SU/database.h \
  /home/sammy/workspace/SU-projekt/SU/include.h \
  /usr/include/x86_64-linux-gnu/qt5/QtSql/QtSql \
@@ -554,5 +555,4 @@ CMakeFiles/SU.dir/main.cpp.o: \
  /usr/include/c++/11/bits/locale_facets.tcc \
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
- /usr/include/c++/11/bits/istream.tcc \
- /home/sammy/workspace/SU-projekt/SU/hero.h
+ /usr/include/c++/11/bits/istream.tcc
