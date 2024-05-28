@@ -6,24 +6,26 @@ int main()
     Database DB;
     Hero hero;
 
-
     int load;
-    std::string hero_name;
 
 
 
 //Start MENU//
-    std::cout << "Welcome to the game" << std::endl;
-    std::cout << "(0)New game (1)Load game: " << std::endl;
+    include::cleanUp();
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "   Welcome to the Story of Legends   " << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "0 -> Start a new legend" << std::endl;
+    std::cout << "1 -> Load an old legend" << std::endl;
     std::cin >> load;
     std::cout << load << std::endl;
 
-    if (load == 1) {                        //Load Game//
-        std::cout << "you chose Load game";
-        std::cout << "Name of Hero: ";
-        std::cin >> hero_name;
-    } else {                                //New Game//
+    if (load == 0) {                        //New Game//
         hero.newHero();
+        hero.printStats();
+    } else {                                //Load Game//
+        hero.loadHero();
+        hero.printStats();
     }
     return 0;
 }

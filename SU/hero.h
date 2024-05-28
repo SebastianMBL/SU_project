@@ -6,12 +6,22 @@
 class Hero
 {
 public:
+    //VARIABLES
+    std::string name;
+    int         experience;
+    int         level;
+    int         hitPoints;
+    int         strength;
+
+
     //CONSTRUCTOR
     Hero();
 
     //FUNCTIONS
     bool newHero();
     bool loadHero();
+    void printStats();
+    void update();
 
 private:
     QSqlQuery mQuery;
