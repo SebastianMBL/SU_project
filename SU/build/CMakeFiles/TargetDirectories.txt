@@ -1,0 +1,8 @@
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/SU.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/edit_cache.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/rebuild_cache.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/list_install_components.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/install.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/install/local.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/install/strip.dir
+/home/sammy/workspace/SU-projekt/SU/build/CMakeFiles/SU_autogen.dir

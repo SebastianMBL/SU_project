@@ -108,6 +108,12 @@ SU_EXTERNAL_OBJECTS =
 SU: CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o
 SU: CMakeFiles/SU.dir/main.cpp.o
 SU: CMakeFiles/SU.dir/build.make
+SU: /usr/lib/x86_64-linux-gnu/libQt5Quick.so.5.15.3
+SU: /usr/lib/x86_64-linux-gnu/libQt5Sql.so.5.15.3
+SU: /usr/lib/x86_64-linux-gnu/libQt5QmlModels.so.5.15.3
+SU: /usr/lib/x86_64-linux-gnu/libQt5Qml.so.5.15.3
+SU: /usr/lib/x86_64-linux-gnu/libQt5Network.so.5.15.3
+SU: /usr/lib/x86_64-linux-gnu/libQt5Gui.so.5.15.3
 SU: /usr/lib/x86_64-linux-gnu/libQt5Core.so.5.15.3
 SU: CMakeFiles/SU.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sammy/workspace/SU-projekt/SU/build/Desktop-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable SU"

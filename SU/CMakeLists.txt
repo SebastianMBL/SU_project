@@ -9,13 +9,21 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+find_package(Qt5 REQUIRED COMPONENTS Core Quick Sql)
+if(NOT Qt5_FOUND)
+    message(FATAL_ERROR "Qt5 not found! Please install Qt5.")
+endif()
+
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Core)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core)
 
 add_executable(SU
   main.cpp
+
 )
 target_link_libraries(SU Qt${QT_VERSION_MAJOR}::Core)
+
+target_link_libraries(SU Qt5::Core Qt5::Quick Qt5::Sql)
 
 include(GNUInstallDirs)
 install(TARGETS SU
