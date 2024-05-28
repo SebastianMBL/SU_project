@@ -115,6 +115,12 @@
 			"MU",
 			"EWIEGA46WW/moc_include.cpp",
 			null
+		],
+		[
+			"/home/sammy/workspace/SU-projekt/SU/opponent.h",
+			"MU",
+			"EWIEGA46WW/moc_opponent.cpp",
+			null
 		]
 	],
 	"HEADER_EXTENSIONS" : [ "h", "hh", "h++", "hm", "hpp", "hxx", "in", "txx" ],
@@ -184,7 +190,8 @@
 		[ "/home/sammy/workspace/SU-projekt/SU/database.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/hero.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/include.cpp", "MU", null ],
-		[ "/home/sammy/workspace/SU-projekt/SU/main.cpp", "MU", null ]
+		[ "/home/sammy/workspace/SU-projekt/SU/main.cpp", "MU", null ],
+		[ "/home/sammy/workspace/SU-projekt/SU/opponent.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

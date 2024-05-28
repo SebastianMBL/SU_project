@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/home/sammy/workspace/SU-projekt/SU/hero.cpp" "CMakeFiles/SU.dir/hero.cpp.o" "gcc" "CMakeFiles/SU.dir/hero.cpp.o.d"
   "/home/sammy/workspace/SU-projekt/SU/include.cpp" "CMakeFiles/SU.dir/include.cpp.o" "gcc" "CMakeFiles/SU.dir/include.cpp.o.d"
   "/home/sammy/workspace/SU-projekt/SU/main.cpp" "CMakeFiles/SU.dir/main.cpp.o" "gcc" "CMakeFiles/SU.dir/main.cpp.o.d"
+  "/home/sammy/workspace/SU-projekt/SU/opponent.cpp" "CMakeFiles/SU.dir/opponent.cpp.o" "gcc" "CMakeFiles/SU.dir/opponent.cpp.o.d"
   )
 
 # Targets to which this target links.

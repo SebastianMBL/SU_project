@@ -118,5 +118,4 @@ void Hero::update() {
     if (!mQuery.exec()) {
         std::cout << "didn't sucessfully update" << std::endl;
     }
-    std::cout << experience << std::endl;
 }

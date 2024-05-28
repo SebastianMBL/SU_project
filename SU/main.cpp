@@ -1,10 +1,12 @@
     #include "database.h"
     #include "hero.h"
+    #include "opponent.h"
 
 int main()
 {
     Database DB;
     Hero hero;
+    Opponent opponent;
 
     int load;
 

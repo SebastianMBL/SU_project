@@ -12,6 +12,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SU.dir/include.cpp.o.d"
   "CMakeFiles/SU.dir/main.cpp.o"
   "CMakeFiles/SU.dir/main.cpp.o.d"
+  "CMakeFiles/SU.dir/opponent.cpp.o"
+  "CMakeFiles/SU.dir/opponent.cpp.o.d"
   "SU"
   "SU.pdb"
 )

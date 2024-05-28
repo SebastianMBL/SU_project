@@ -22,6 +22,7 @@ add_executable(SU
   include.h include.cpp
   hero.h hero.cpp
   database.h database.cpp
+  opponent.h opponent.cpp
 
 )
 target_link_libraries(SU Qt${QT_VERSION_MAJOR}::Core)
