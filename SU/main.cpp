@@ -13,12 +13,11 @@ int main()
 
 
 //Start MENU//
-
+    do {
     include::cleanUp();
     include::startMenu();
     std::cin >> input;
 
-    do {
     switch (input) {
         case 0: //NEW
             include::cleanUp();
@@ -28,11 +27,23 @@ int main()
 
         case 1: //LOAD
             include::cleanUp();
-            hero.loadHero();
-            hero.printStats();
+            if (!hero.loadHero()){
+                input = 4;
+                std::cout << "Press enter to return to menu.."        << std::endl;
+                std::cin.ignore();
+                std::cin.get();
+            }
+            else {
+                hero.printStats();
+            }
             break;
 
         case 2: //EXIT
+            include::cleanUp();
+            hero.removeHero();
+            break;
+
+        case 3:
             std::cout << "Exiting the Story of Legends.."   << std::endl;
             return 0;
 
@@ -52,13 +63,16 @@ int main()
         do {
             switch (input) {
                 case 0:
-                    include::cleanUp();
-                    include::battle();
-                    opponent.random();
-                    opponent.printStats();
-                    std::cout << "Press enter to continue.."        << std::endl;
-                    std::cin.ignore();
-                    std::cin.get();
+                    do {
+                        include::cleanUp();
+                        include::battle();
+                        opponent.random();
+                        opponent.printStats();
+                        std::cout << "0 -> Face this opponent"      << std::endl;
+                        std::cout << "1 -> Look for another opponent" << std::endl;
+                        std::cin >> input;
+                    } while(input != 0);
+
                     do {
                         include::cleanUp();
                         include::battle();
@@ -70,12 +84,35 @@ int main()
                         opponent.printHP();
 
                         opponent.currentHP -= hero.strength;
-                        hero.currentHP -= opponent.strength;
                         std::this_thread::sleep_for(std::chrono::seconds(1) );
+                        include::cleanUp();
+                        include::battle();
+                        std::cout                                   << std::endl;
+                        std::cout << hero.name                      << std::endl;
+                        hero.printHP();
+                        std::cout                                   << std::endl;
+                        std::cout << opponent.name                  << std::endl;
+                        opponent.printHP();
 
-
+                        if (opponent.currentHP > 0) {
+                            hero.currentHP -= opponent.strength;
+                            std::this_thread::sleep_for(std::chrono::seconds(1) );
+                        }
                     } while(hero.currentHP > 0 && opponent.currentHP > 0);
 
+                    if (opponent.currentHP <= 0) {
+                        hero.experience += opponent.experience;
+                        hero.update();
+
+                    }
+                    if (hero.currentHP <= 0) {
+                        include::die();
+                        hero.die();
+                        std::cout << "Press enter to exit.."        << std::endl;
+                        std::cin.ignore();
+                        std::cin.get();
+                        return 0;
+                    }
                     break;
 
                 case 1:

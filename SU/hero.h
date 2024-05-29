@@ -21,10 +21,12 @@ public:
     //FUNCTIONS
     bool newHero();
     bool loadHero();
+    bool removeHero();
     void printStats();
     void printHP();
     void update();
     void rest();
+    void die();
 
 private:
     QSqlQuery mQuery;

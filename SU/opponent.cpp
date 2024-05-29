@@ -1,4 +1,5 @@
 #include "opponent.h"
+#include "hero.h"
 
 Opponent::Opponent() {
     mQuery.exec("CREATE TABLE opponentDB ("

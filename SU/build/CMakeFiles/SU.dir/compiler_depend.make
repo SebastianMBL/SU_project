@@ -3093,7 +3093,8 @@ CMakeFiles/SU.dir/opponent.cpp.o: ../opponent.cpp \
   /usr/include/c++/11/bits/basic_ios.tcc \
   /usr/include/c++/11/bits/ostream.tcc \
   /usr/include/c++/11/istream \
-  /usr/include/c++/11/bits/istream.tcc
+  /usr/include/c++/11/bits/istream.tcc \
+  ../hero.h
 
 
 ../include.cpp:

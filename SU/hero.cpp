@@ -5,9 +5,10 @@ Hero::Hero() {
                 "id         INT PRIMARY KEY AUTO_INCREMENT,"
                 "name       CHAR(100),"
                 "xp         INT,"
-                "level      INT,"
+                "lvl        INT,"
                 "hp         INT,"
-                "str        INT)");
+                "str        INT,"
+                "chp        INT)");
 }
 
 bool Hero::newHero() {
@@ -18,13 +19,14 @@ bool Hero::newHero() {
     std::cout << "Name your new Hero: "                 << std::endl;
     std::cin >> Hname;
 
-    mQuery.prepare("INSERT INTO heroDB (name, xp, level, hp, str)"
-                   "VALUES (:name, :xp, :level, :hp, :str)");
+    mQuery.prepare("INSERT INTO heroDB (name, xp, lvl, hp, str, chp)"
+                   "VALUES (:name, :xp, :lvl, :hp, :str, :chp)");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
     mQuery.bindValue(":xp",     0);
-    mQuery.bindValue(":level",  1);
+    mQuery.bindValue(":lvl",  1);
     mQuery.bindValue(":hp",     10);
     mQuery.bindValue(":str",    2);
+    mQuery.bindValue(":chp",    10);
 
     mQuery.exec();
 
@@ -36,8 +38,7 @@ bool Hero::newHero() {
     level       = 1;
     hitPoints   = 10;
     strength    = 2;
-
-    currentHP   = hitPoints;
+    currentHP   = 10;
     return true;
 }
 
@@ -91,8 +92,49 @@ bool Hero::loadHero() {
     level       = mQuery.value(3).toInt();
     hitPoints   = mQuery.value(4).toInt();
     strength    = mQuery.value(5).toInt();
+    currentHP   = mQuery.value(6).toInt();
+    return true;
+}
 
-    currentHP   = hitPoints;
+bool Hero::removeHero() {
+    include::cleanUp();
+
+    mQuery.exec("SELECT * FROM heroDB");
+
+    if (!mQuery.next()) {
+        std::cout << "you have no heroes"               << std::endl;
+        return false;
+    }
+
+    std::cout << "Here are all of your heroes: "        << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<  "        << std::endl;
+    do {QString     Hname    = mQuery.value(1).toString();
+        int         Hlevel   = mQuery.value(3).toInt();
+
+        std::cout << "Hero  :" << Hname.toStdString()   << std::endl;
+        std::cout << "Level :" << Hlevel                << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~"      << std::endl;
+    } while (mQuery.next());
+
+    std::string Hname;
+    std::cout << "Which one are you going to remove :"    << std::endl;
+    std::cin >> Hname;
+
+    mQuery.prepare("SELECT * FROM heroDB WHERE name = :name");
+    mQuery.bindValue(":name",   QString::fromStdString(Hname));
+
+    if(!mQuery.exec()){
+        std::cout << "Couldn't find the hero"           << std::endl;
+        std::cout << "Press enter to continue"          << std::endl;
+        std::cin.ignore();
+        std::cin.get();
+        return false;
+    }
+
+    mQuery.prepare("DELETE FROM heroDB WHERE name = :name");
+    mQuery.bindValue(":name",   QString::fromStdString(Hname));
+    mQuery.exec();
+
     return true;
 }
 
@@ -151,12 +193,20 @@ void Hero::printHP() {
 }
 
 void Hero::update() {
-    mQuery.prepare("UPDATE heroDB SET xp = :experience, level = :level, hp = :hitPoints, str = :strength WHERE name = :name");
+    if (experience >= level * 1000) {
+        experience  =  0;
+        level       += 1;
+        hitPoints   += 2;
+        strength    += 1;
+    }
 
-    mQuery.bindValue(":experience", experience);
-    mQuery.bindValue(":level", level);
-    mQuery.bindValue(":hitPoints", hitPoints);
-    mQuery.bindValue(":strength", strength);
+    mQuery.prepare("UPDATE heroDB SET xp = :xp, lvl = :lvl, hp = :hp, str = :str , chp = :chp WHERE name = :name");
+
+    mQuery.bindValue(":xp", experience);
+    mQuery.bindValue(":lvl", level);
+    mQuery.bindValue(":hp", hitPoints);
+    mQuery.bindValue(":str", strength);
+    mQuery.bindValue(":chp", currentHP);
     mQuery.bindValue(":name", QString::fromStdString(name));
 
     if (!mQuery.exec()) {
@@ -170,4 +220,10 @@ void Hero::rest() {
     if (currentHP > hitPoints) {
         currentHP = hitPoints;
     }
+}
+
+void Hero::die() {
+    mQuery.prepare("DELETE FROM heroDB WHERE name = :name");
+    mQuery.bindValue(":name",   QString::fromStdString(name));
+    mQuery.exec();
 }

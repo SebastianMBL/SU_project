@@ -23,6 +23,8 @@ public:
     static void startMenu();
     static void gameMenu();
     static void battle();
+    static void win();
+    static void die();
 };
 
 #endif // INCLUDE_H
