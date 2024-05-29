@@ -12,6 +12,7 @@ public:
     int         level;
     int         hitPoints;
     int         strength;
+    int         currentHP;
 
 
     //CONSTRUCTOR
@@ -21,7 +22,9 @@ public:
     bool newHero();
     bool loadHero();
     void printStats();
+    void printHP();
     void update();
+    void rest();
 
 private:
     QSqlQuery mQuery;

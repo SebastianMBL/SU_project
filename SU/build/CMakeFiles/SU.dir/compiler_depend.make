@@ -603,6 +603,9 @@ CMakeFiles/SU.dir/database.cpp.o: ../database.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/c++/11/math.h \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -1218,6 +1221,9 @@ CMakeFiles/SU.dir/hero.cpp.o: ../hero.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/c++/11/math.h \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -1832,6 +1838,9 @@ CMakeFiles/SU.dir/include.cpp.o: ../include.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/c++/11/math.h \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -2447,6 +2456,9 @@ CMakeFiles/SU.dir/main.cpp.o: ../main.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/c++/11/math.h \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -3064,6 +3076,9 @@ CMakeFiles/SU.dir/opponent.cpp.o: ../opponent.cpp \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
   /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
   /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+  /usr/include/c++/11/math.h \
+  /usr/include/c++/11/thread \
+  /usr/include/c++/11/bits/this_thread_sleep.h \
   /usr/include/c++/11/iostream \
   /usr/include/c++/11/ostream \
   /usr/include/c++/11/ios \
@@ -3092,6 +3107,8 @@ CMakeFiles/SU.dir/opponent.cpp.o: ../opponent.cpp \
 /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h:
 
 /usr/include/c++/11/ostream:
+
+/usr/include/c++/11/math.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h:
 
@@ -3428,6 +3445,8 @@ CMakeFiles/SU.dir/opponent.cpp.o: ../opponent.cpp \
 /usr/include/c++/11/bits/stringfwd.h:
 
 /usr/include/c++/11/bits/locale_facets.tcc:
+
+/usr/include/c++/11/bits/this_thread_sleep.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qpropertyanimation.h:
 
@@ -3924,6 +3943,8 @@ SU_autogen/mocs_compilation.cpp:
 /usr/include/c++/11/bits/stl_iterator_base_types.h:
 
 /usr/include/x86_64-linux-gnu/qt5/QtCore/qbytearray.h:
+
+/usr/include/c++/11/thread:
 
 /usr/include/c++/11/condition_variable:
 

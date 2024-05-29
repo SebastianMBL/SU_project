@@ -8,14 +8,21 @@ class Opponent
 public:
     //VARIABLES
     std::string name;
-    int         xp;
-    int         hp;
-    int         str;
+    int         experience;
+    int         hitPoints;
+    int         strength;
+
+    int         currentHP;
 
     //CONSTRUCTOR
     Opponent();
     //DESTRUCTOR
     ~Opponent();
+
+    //FUNCTIONS
+    void random();
+    void printStats();
+    void printHP();
 
 private:
     QSqlQuery mQuery;

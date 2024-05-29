@@ -545,6 +545,8 @@ CMakeFiles/SU.dir/main.cpp.o: \
  /usr/include/x86_64-linux-gnu/qt5/QtSql/qtsqlversion.h \
  /usr/include/x86_64-linux-gnu/qt5/QtSql/QSqlDatabase \
  /usr/include/x86_64-linux-gnu/qt5/QtCore/QString \
+ /usr/include/c++/11/math.h /usr/include/c++/11/thread \
+ /usr/include/c++/11/bits/this_thread_sleep.h \
  /usr/include/c++/11/iostream /usr/include/c++/11/ostream \
  /usr/include/c++/11/ios /usr/include/c++/11/bits/basic_ios.h \
  /usr/include/c++/11/bits/locale_facets.h /usr/include/c++/11/cwctype \

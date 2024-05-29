@@ -37,6 +37,7 @@ bool Hero::newHero() {
     hitPoints   = 10;
     strength    = 2;
 
+    currentHP   = hitPoints;
     return true;
 }
 
@@ -91,19 +92,62 @@ bool Hero::loadHero() {
     hitPoints   = mQuery.value(4).toInt();
     strength    = mQuery.value(5).toInt();
 
-
+    currentHP   = hitPoints;
     return true;
 }
 
 void Hero::printStats() {
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
-    std::cout << "               Stats:               " << std::endl;
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
-    std::cout << "Name :        " << name               << std::endl;
-    std::cout << "Experience :  " << experience         << std::endl;
-    std::cout << "Level :       " << level              << std::endl;
-    std::cout << "Hit Points :  " << hitPoints          << std::endl;
-    std::cout << "Strength :    " << strength           << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "                  Stats:                " << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "Name :        " << name                   << std::endl;
+    std::cout << "Experience :  " << experience             << std::endl;
+    std::cout << "Level :       " << level                  << std::endl;
+    std::cout << "Hit Points :  " << hitPoints              << std::endl;
+    std::cout << "Strength :    " << strength               << std::endl;
+}
+
+void Hero::printHP() {
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "HP: " << currentHP << "/" << hitPoints << std::endl;
+    //int amount = rint(;
+
+    switch ((currentHP *10) / hitPoints) {
+        case 0:
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 1:
+    std::cout << "████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 2:
+    std::cout << "████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 3:
+    std::cout << "████████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 4:
+    std::cout << "████████████████~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 5:
+    std::cout << "████████████████████~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 6:
+    std::cout << "████████████████████████~~~~~~~~~~~~~~~~" << std::endl;
+    break;
+        case 7:
+    std::cout << "████████████████████████████~~~~~~~~~~~~" << std::endl;
+    break;
+        case 8:
+    std::cout << "████████████████████████████████~~~~~~~~" << std::endl;
+    break;
+        case 9:
+    std::cout << "████████████████████████████████████~~~~" << std::endl;
+    break;
+        case 10:
+    std::cout << "████████████████████████████████████████" << std::endl;
+    break;
+            }
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
 }
 
 void Hero::update() {
@@ -117,5 +161,13 @@ void Hero::update() {
 
     if (!mQuery.exec()) {
         std::cout << "didn't sucessfully update" << std::endl;
+    }
+}
+
+void Hero::rest() {
+    std::random_device ranDev;
+    currentHP += ranDev() % hitPoints;
+    if (currentHP > hitPoints) {
+        currentHP = hitPoints;
     }
 }
