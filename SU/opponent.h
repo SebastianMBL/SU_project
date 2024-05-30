@@ -23,6 +23,7 @@ public:
     void random();
     void printStats();
     void printHP();
+    void load(std::string oponentName);
 
 private:
     QSqlQuery mQuery;

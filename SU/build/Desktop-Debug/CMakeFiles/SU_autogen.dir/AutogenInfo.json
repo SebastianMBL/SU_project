@@ -106,6 +106,12 @@
 			null
 		],
 		[
+			"/home/sammy/workspace/SU-projekt/SU/dungeon.h",
+			"MU",
+			"EWIEGA46WW/moc_dungeon.cpp",
+			null
+		],
+		[
 			"/home/sammy/workspace/SU-projekt/SU/hero.h",
 			"MU",
 			"EWIEGA46WW/moc_hero.cpp",
@@ -188,6 +194,7 @@
 	"SOURCES" : 
 	[
 		[ "/home/sammy/workspace/SU-projekt/SU/database.cpp", "MU", null ],
+		[ "/home/sammy/workspace/SU-projekt/SU/dungeon.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/hero.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/include.cpp", "MU", null ],
 		[ "/home/sammy/workspace/SU-projekt/SU/main.cpp", "MU", null ],

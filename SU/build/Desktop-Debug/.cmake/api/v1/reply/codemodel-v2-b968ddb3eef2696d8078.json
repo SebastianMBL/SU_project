@@ -7,7 +7,7 @@
 				{
 					"build" : ".",
 					"hasInstallRule" : true,
-					"jsonFile" : "directory-.-Debug-ddb7d9cb028f8d4f61ce.json",
+					"jsonFile" : "directory-.-Debug-bb84a435df2e6aeeddce.json",
 					"minimumCMakeVersion" : 
 					{
 						"string" : "3.14"
@@ -42,7 +42,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "SU::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-SU-Debug-daaa676de44b4868f90b.json",
+					"jsonFile" : "target-SU-Debug-bab937a878eb30b5e100.json",
 					"name" : "SU",
 					"projectIndex" : 0
 				},

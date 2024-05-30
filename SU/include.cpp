@@ -23,8 +23,9 @@ void include::gameMenu() {
     std::cout << "      What are you gonna do today?      " << std::endl;
     std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
     std::cout << "0 -> Let your Hero face an opponent"      << std::endl;
-    std::cout << "1 -> Let your Hero rest"                  << std::endl;
-    std::cout << "2 -> Exit the Story of Legends"           << std::endl;
+    std::cout << "1 -> Let your Hero enter a dungeon"       << std::endl;
+    std::cout << "2 -> Let your Hero rest"                  << std::endl;
+    std::cout << "3 -> Exit the Story of Legends"           << std::endl;
 
 }
 
@@ -33,6 +34,18 @@ void include::battle() {
     std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
     std::cout << "             TIME FOR A DUAL            " << std::endl;
     std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+
+}
+
+void include::dungeon() {
+
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "         Welcome to the Dungeon         " << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "0 -> Easy Dungeon"                        << std::endl;
+    std::cout << "1 -> Medium Dungeon"                      << std::endl;
+    std::cout << "2 -> Hard Dungeon"                        << std::endl;
+    std::cout << "Which Dungeon would you like to enter?"   << std::endl;
 
 }
 

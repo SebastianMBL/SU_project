@@ -23,6 +23,7 @@ public:
     static void startMenu();
     static void gameMenu();
     static void battle();
+    static void dungeon();
     static void win();
     static void die();
 };

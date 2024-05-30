@@ -6,6 +6,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/SU.dir/SU_autogen/mocs_compilation.cpp.o.d"
   "CMakeFiles/SU.dir/database.cpp.o"
   "CMakeFiles/SU.dir/database.cpp.o.d"
+  "CMakeFiles/SU.dir/dungeon.cpp.o"
+  "CMakeFiles/SU.dir/dungeon.cpp.o.d"
   "CMakeFiles/SU.dir/hero.cpp.o"
   "CMakeFiles/SU.dir/hero.cpp.o.d"
   "CMakeFiles/SU.dir/include.cpp.o"

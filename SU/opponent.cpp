@@ -10,10 +10,10 @@ Opponent::Opponent() {
                 "str        INT)");
 
     mQuery.exec("INSERT INTO opponentDB (name, xp, hp, str) VALUES "
-                "('Golem', 800, 10, 1), "
-                "('Phoenix', 600, 5, 1), "
-                "('Hydra', 1000, 7, 2), "
-                "('Harpy', 400, 4, 1)");
+                "('Golem',      1100,   20,     1), "
+                "('Phoenix',    900,    8,      2), "
+                "('Hydra',      1500,   10,     3), "
+                "('Harpy',      600,    4,      2)");
 }
 
 Opponent::~Opponent() {
@@ -27,6 +27,20 @@ void Opponent::random() {
 
     mQuery.prepare("SELECT * FROM opponentDB WHERE name = :name");
     mQuery.bindValue(":name",   QString::fromStdString(opponentNames[opponentNr]));
+    mQuery.exec();
+    mQuery.next();
+
+    name        = mQuery.value(1).toString().toStdString();
+    experience  = mQuery.value(2).toInt();
+    hitPoints   = mQuery.value(3).toInt();
+    strength    = mQuery.value(4).toInt();
+
+    currentHP   = hitPoints;
+}
+
+void Opponent::load(std::string opponentName) {
+    mQuery.prepare("SELECT * FROM opponentDB WHERE name = :name");
+    mQuery.bindValue(":name",   QString::fromStdString(opponentName));
     mQuery.exec();
     mQuery.next();
 

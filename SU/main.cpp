@@ -1,12 +1,14 @@
     #include "database.h"
     #include "hero.h"
     #include "opponent.h"
+    #include "dungeon.h"
 
 int main()
 {
     Database DB;
     Hero hero;
     Opponent opponent;
+    Dungeon dungeon;
 
     int input;
     int temp;
@@ -116,10 +118,63 @@ int main()
                     break;
 
                 case 1:
+                    include::cleanUp();
+                    include::dungeon();
+                    std::cin >> input;
+                    dungeon.load(input);
+
+                    for (int i = 0; i < dungeon.opponents; ++i) {
+                        opponent.random();
+                        do {
+                            include::cleanUp();
+                            include::dungeon();
+                            std::cout                                   << std::endl;
+                            std::cout << hero.name                      << std::endl;
+                            hero.printHP();
+                            std::cout                                   << std::endl;
+                            std::cout << opponent.name                  << std::endl;
+                            opponent.printHP();
+
+                            opponent.currentHP -= hero.strength;
+                            std::this_thread::sleep_for(std::chrono::seconds(1) );
+                            include::cleanUp();
+                            include::dungeon();
+                            std::cout                                   << std::endl;
+                            std::cout << hero.name                      << std::endl;
+                            hero.printHP();
+                            std::cout                                   << std::endl;
+                            std::cout << opponent.name                  << std::endl;
+                            opponent.printHP();
+
+                            if (opponent.currentHP > 0) {
+                                hero.currentHP -= opponent.strength;
+                                std::this_thread::sleep_for(std::chrono::seconds(1) );
+                            }
+                        } while(hero.currentHP > 0 && opponent.currentHP > 0);
+
+                        if (opponent.currentHP <= 0) {
+                            hero.experience += opponent.experience;
+                            hero.update();
+                        }
+
+                        if (hero.currentHP <= 0) {
+                            include::die();
+                            hero.die();
+                            std::cout << "Press enter to exit.."        << std::endl;
+                            std::cin.ignore();
+                            std::cin.get();
+                            return 0;
+                        }
+                    }
+                    hero.experience += dungeon.experience;
+                    hero.update();
+                    break;
+
+                case 2:
                     hero.rest();
                     break;
 
-                case 2: //EXIT
+                case 3: //EXIT
                     include::cleanUp();
                     std::cout << "Exiting the Story of Legends.."   << std::endl;
                     return 0;
@@ -127,7 +182,7 @@ int main()
                 default:
                     std::cout << "Not possible, try again"          << std::endl;
             }
-        } while(input != 0 && input != 1);
+        } while(input != 0 && input != 1 && input != 2);
     } while(true);
     return 0;
 }
