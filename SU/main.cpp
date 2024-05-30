@@ -274,6 +274,7 @@ int main()
                     std::cout << "Not possible, press enter .."          << std::endl;
                     std::cin.ignore();
                     std::cin.get();
+                    input = 3;
                 break;
             }
         } while(input != 0 && input != 1 && input != 2 && input != 3);
