@@ -10,7 +10,8 @@ Hero::Hero() {
                 "hp         INT,"
                 "str        INT,"
                 "chp        INT,"
-                "ring       CHAR(100))");
+                "ring       CHAR(100),"
+                "mana       INT)");
 }
 
 bool Hero::newHero() {
@@ -21,8 +22,8 @@ bool Hero::newHero() {
     std::cout << "Name your new Hero: "                         << std::endl;
     std::cin >> Hname;
 
-    mQuery.prepare("INSERT INTO heroDB (name, xp, gold, lvl, hp, str, chp, ring)"
-                   "VALUES (:name, :xp, :gold, :lvl, :hp, :str, :chp, :ring)");
+    mQuery.prepare("INSERT INTO heroDB (name, xp, gold, lvl, hp, str, chp, ring, mana)"
+                   "VALUES (:name, :xp, :gold, :lvl, :hp, :str, :chp, :ring, :mana)");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
     mQuery.bindValue(":xp",     0);
     mQuery.bindValue(":gold",   0);
@@ -31,6 +32,7 @@ bool Hero::newHero() {
     mQuery.bindValue(":str",    2);
     mQuery.bindValue(":chp",    10);
     mQuery.bindValue(":ring",   QString::fromStdString(""));
+    mQuery.bindValue(":mana",   0);
 
 
     mQuery.exec();
@@ -46,6 +48,7 @@ bool Hero::newHero() {
     strength    = 2;
     currentHP   = 10;
     ring        = "";
+    mana        = 0;
     return true;
 }
 
@@ -107,6 +110,7 @@ bool Hero::loadHero() {
     strength    = mQuery.value(6).toInt();
     currentHP   = mQuery.value(7).toInt();
     ring        = mQuery.value(8).toString().toStdString();
+    mana        = mQuery.value(9).toInt();
     return true;
 }
 
@@ -163,7 +167,8 @@ void Hero::printStats() {
     std::cout << "Hit Points :  " << hitPoints                  << std::endl;
     std::cout << "Strength :    " << strength                   << std::endl;
     if (ring != "") {
-    std::cout << "ring :        " << ring                       << std::endl;
+    std::cout << "Ring :        " << ring                       << std::endl;
+    std::cout << "Mana :        " << mana << "/100"             << std::endl;
     }
 }
 
@@ -217,7 +222,7 @@ void Hero::update() {
         strength    += 1;
     }
 
-    mQuery.prepare("UPDATE heroDB SET xp = :xp, lvl = :lvl, hp = :hp, str = :str , chp = :chp, ring = :ring WHERE name = :name");
+    mQuery.prepare("UPDATE heroDB SET xp = :xp, lvl = :lvl, hp = :hp, str = :str , chp = :chp, ring = :ring, mana = :mana WHERE name = :name");
 
     mQuery.bindValue(":xp", experience);
     mQuery.bindValue(":lvl", level);
@@ -225,6 +230,7 @@ void Hero::update() {
     mQuery.bindValue(":str", strength);
     mQuery.bindValue(":chp", currentHP);
     mQuery.bindValue(":ring", QString::fromStdString(ring));
+    mQuery.bindValue(":mana", mana);
     mQuery.bindValue(":name", QString::fromStdString(name));
 
 
@@ -242,26 +248,6 @@ void Hero::rest() {
 }
 
 int Hero::ringPower(std::string opponentType) {
-    int in;
-    if (ring == ""){return 0;}
-    do {
-        std::cout << "Do you wanna youse your magic ring? (-25 mana)"   << std::endl;
-        std::cout << "0 <- Yes"                                         << std::endl;
-        std::cout << "1 <- No"                                          << std::endl;
-        std::cin >> in;
-    } while (in != 0 && in != 1);
-
-    if (in == 0){return 0;}
-    if (in == 1){
-        if (mana < 25) {
-            std::cout << "You dont have enough mana"                    << std::endl;
-            std::cout << "Press enter to continue .."                   << std::endl;
-            std::cin.ignore();
-            std::cin.get();
-            return 0;
-        }
-    }
-
 
     if (ring == "Fire"){                    //Ring type FIRE
         weak    = "Water";

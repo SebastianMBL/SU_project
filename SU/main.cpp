@@ -79,7 +79,25 @@ int main()
                         include::cleanUp();
                         include::battle();
                         opponent.printStats();
-                        hero.ringPower(opponent.element);                            //Ring power
+
+                        do {
+                            std::cout << "Do you wanna youse your magic ring? (-25 mana)"   << std::endl;
+                            std::cout << "0 <- Yes"                                         << std::endl;
+                            std::cout << "1 <- No"                                          << std::endl;
+                            std::cin >> input;
+                        } while (input != 0 && input != 1);
+
+                        if (input == 1){}
+                        else if (input == 0 && hero.mana < 25){
+                            std::cout << "You dont have enough mana"                    << std::endl;
+                            std::cout << "Press enter to continue .."                   << std::endl;
+                            std::cin.ignore();
+                            std::cin.get();
+                        }
+                        else if (input == 0 && hero.mana > 25){
+                            hero.mana -= 25;
+                            opponent.currentHP -= hero.ringPower(opponent.element);
+                        }
                     }
 
                     do {
@@ -111,6 +129,12 @@ int main()
 
                     if (opponent.currentHP <= 0) {
                         hero.experience += opponent.experience;
+
+                        std::random_device ranDev;
+                        hero.mana       += ranDev() % 11;
+                        if (hero.mana > 100) {
+                            hero.mana = 100;
+                        }
                         hero.update();
 
                     }
@@ -122,10 +146,11 @@ int main()
                         std::cin.get();
                         return 0;
                     }
+                input = 0;
                 break;
 
                 case 1:
-                    include::cleanUp();
+                    include::cleanUp();                                                 //Dungeon select
                     include::dungeon();
                     std::cin >> input;
                     dungeon.load(input);
@@ -137,12 +162,30 @@ int main()
                             include::cleanUp();
                             include::battle();
                             opponent.printStats();
-                            hero.ringPower(opponent.element);                            //Ring power
+
+                            do {
+                                std::cout << "Do you wanna youse your magic ring? (-25 mana)"   << std::endl;
+                                std::cout << "0 <- Yes"                                         << std::endl;
+                                std::cout << "1 <- No"                                          << std::endl;
+                                std::cin >> input;
+                            } while (input != 0 && input != 1);
+
+                            if (input == 1){}
+                            else if (input == 0 && hero.mana < 25){
+                                std::cout << "You dont have enough mana"                    << std::endl;
+                                std::cout << "Press enter to continue .."                   << std::endl;
+                                std::cin.ignore();
+                                std::cin.get();
+                            }
+                            else if (input == 0 && hero.mana > 25){
+                                hero.mana -= 25;
+                                opponent.currentHP -= hero.ringPower(opponent.element);
+                            }
                         }
 
                         do {
                             include::cleanUp();
-                            include::dungeon();
+                            include::battle();
                             std::cout                                   << std::endl;
                             std::cout << hero.name                      << std::endl;
                             hero.printHP();
@@ -153,7 +196,7 @@ int main()
                             opponent.currentHP -= hero.strength;
                             std::this_thread::sleep_for(std::chrono::seconds(1) );
                             include::cleanUp();
-                            include::dungeon();
+                            include::battle();
                             std::cout                                   << std::endl;
                             std::cout << hero.name                      << std::endl;
                             hero.printHP();
@@ -182,7 +225,9 @@ int main()
                         }
                     }
                     hero.experience += dungeon.experience;
+                    hero.gold       += dungeon.gold;
                     hero.update();
+                input = 1;
                 break;
 
                 case 2:
@@ -212,7 +257,7 @@ int main()
                             std::cin.get();
                         }
 
-                    input = 2;
+                input = 2;
                 break;
 
                 case 3:
@@ -231,7 +276,7 @@ int main()
                     std::cin.get();
                 break;
             }
-        } while(input != 0 && input != 1 && input != 2);
+        } while(input != 0 && input != 1 && input != 2 && input != 3);
     } while(true);
     return 0;
 }
