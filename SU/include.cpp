@@ -24,8 +24,9 @@ void include::gameMenu() {
     std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
     std::cout << "0 -> Let your Hero face an opponent"      << std::endl;
     std::cout << "1 -> Let your Hero enter a dungeon"       << std::endl;
-    std::cout << "2 -> Let your Hero rest"                  << std::endl;
-    std::cout << "3 -> Exit the Story of Legends"           << std::endl;
+    std::cout << "2 -> Let your Hero go to the shop"        << std::endl;
+    std::cout << "3 -> Let your Hero rest"                  << std::endl;
+    std::cout << "4 -> Exit the Story of Legends"           << std::endl;
 
 }
 
@@ -46,6 +47,21 @@ void include::dungeon() {
     std::cout << "1 -> Medium Dungeon"                      << std::endl;
     std::cout << "2 -> Hard Dungeon"                        << std::endl;
     std::cout << "Which Dungeon would you like to enter?"   << std::endl;
+
+}
+
+void include::shop() {
+
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "          Welcome to the Shop           " << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
+    std::cout << "0 -> Fire Ring        price: 10 gold"     << std::endl;
+    std::cout << "1 -> Earth Ring       price: 10 gold"     << std::endl;
+    std::cout << "2 -> Metal Ring       price: 10 gold"     << std::endl;
+    std::cout << "3 -> Water Ring       price: 10 gold"     << std::endl;
+    std::cout << "4 -> Wood Ring        price: 10 gold"     << std::endl;
+    std::cout << "5 -> Exit Shop"                           << std::endl;
+    std::cout << "Would you like to buy a magic ring?"      << std::endl;
 
 }
 

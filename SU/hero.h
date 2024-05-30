@@ -9,10 +9,16 @@ public:
     //VARIABLES
     std::string name;
     int         experience;
+    int         gold;
     int         level;
     int         hitPoints;
     int         strength;
     int         currentHP;
+    std::string ring;
+    int         mana;
+
+    std::string weak;
+    std::string strong;
 
 
     //CONSTRUCTOR
@@ -26,6 +32,7 @@ public:
     void printHP();
     void update();
     void rest();
+    int ringPower(std::string opponentType);
     void die();
 
 private:

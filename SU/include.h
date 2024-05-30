@@ -24,6 +24,7 @@ public:
     static void gameMenu();
     static void battle();
     static void dungeon();
+    static void shop();
     static void win();
     static void die();
 };

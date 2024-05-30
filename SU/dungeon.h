@@ -10,8 +10,8 @@ public:
     //VARIABLES
     std::string     name;
     int             experience;
+    int             gold;
     int             opponents;
-    int             currentOpponents;
 
     //CONSTRUCTOR
     Dungeon();

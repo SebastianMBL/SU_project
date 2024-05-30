@@ -5,12 +5,13 @@ Dungeon::Dungeon() {
                 "id         INT PRIMARY KEY AUTO_INCREMENT,"
                 "name       CHAR(100),"
                 "xp         INT,"
+                "gold       INT,"
                 "opp        INT)");
 
-    mQuery.exec("INSERT INTO dungeonDB (name, xp, opp) VALUES "
-                "('Easy',   5000,   3), "
-                "('Medium', 10000,  6), "
-                "('Hard',   15000,  9)" );
+    mQuery.exec("INSERT INTO dungeonDB (name, xp, gold, opp) VALUES "
+                "('Easy',   3000,   2,      3), "
+                "('Medium', 6000,   5,      6), "
+                "('Hard',   10000,  10,     9)" );
 }
 
 Dungeon::~Dungeon() {
@@ -37,5 +38,6 @@ void Dungeon::load(int dungeonType) {
 
     name        = mQuery.value(1).toString().toStdString();
     experience  = mQuery.value(2).toInt();
-    opponents   = mQuery.value(3).toInt();
+    gold        = mQuery.value(3).toInt();
+    opponents   = mQuery.value(4).toInt();
 }

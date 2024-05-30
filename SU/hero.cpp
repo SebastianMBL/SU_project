@@ -5,40 +5,47 @@ Hero::Hero() {
                 "id         INT PRIMARY KEY AUTO_INCREMENT,"
                 "name       CHAR(100),"
                 "xp         INT,"
+                "gold       INT,"
                 "lvl        INT,"
                 "hp         INT,"
                 "str        INT,"
-                "chp        INT)");
+                "chp        INT,"
+                "ring       CHAR(100))");
 }
 
 bool Hero::newHero() {
     std::string Hname;
     include::cleanUp();
 
-    std::cout << "you chose New game"                   << std::endl;
-    std::cout << "Name your new Hero: "                 << std::endl;
+    std::cout << "you chose New game"                           << std::endl;
+    std::cout << "Name your new Hero: "                         << std::endl;
     std::cin >> Hname;
 
-    mQuery.prepare("INSERT INTO heroDB (name, xp, lvl, hp, str, chp)"
-                   "VALUES (:name, :xp, :lvl, :hp, :str, :chp)");
+    mQuery.prepare("INSERT INTO heroDB (name, xp, gold, lvl, hp, str, chp, ring)"
+                   "VALUES (:name, :xp, :gold, :lvl, :hp, :str, :chp, :ring)");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
     mQuery.bindValue(":xp",     0);
-    mQuery.bindValue(":lvl",  1);
+    mQuery.bindValue(":gold",   0);
+    mQuery.bindValue(":lvl",    1);
     mQuery.bindValue(":hp",     10);
     mQuery.bindValue(":str",    2);
     mQuery.bindValue(":chp",    10);
+    mQuery.bindValue(":ring",   QString::fromStdString(""));
+
 
     mQuery.exec();
 
     include::cleanUp();
-    std::cout << "Welcome to the legend of " << Hname    << std::endl;
+    std::cout << "Welcome to the legend of " << Hname           << std::endl;
 
     name        = Hname;
     experience  = 0;
+    gold        = 0;
     level       = 1;
     hitPoints   = 10;
     strength    = 2;
     currentHP   = 10;
+    ring        = "";
     return true;
 }
 
@@ -48,51 +55,58 @@ bool Hero::loadHero() {
     mQuery.exec("SELECT * FROM heroDB");
 
     if (!mQuery.next()) {
-        std::cout << "you have no heroes"               << std::endl;
+        std::cout << "You have no heroes"                       << std::endl;
         return false;
     }
 
-    std::cout << "Here are all of your heroes: "        << std::endl;
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<  "        << std::endl;
+    std::cout << "Here are all of your heroes: "                << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
     do {QString     Hname    = mQuery.value(1).toString();
-        int         Hlevel   = mQuery.value(3).toInt();
+        int         Hlevel   = mQuery.value(4).toInt();
 
-        std::cout << "Hero  :" << Hname.toStdString()   << std::endl;
-        std::cout << "Level :" << Hlevel                << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~"      << std::endl;
+        std::cout << "Hero  :" << Hname.toStdString()           << std::endl;
+        std::cout << "Level :" << Hlevel                        << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     } while (mQuery.next());
 
     std::string Hname;
-    std::cout << "Which one are you going to play :"    << std::endl;
+    std::cout << "Which one are you going to play :"            << std::endl;
     std::cin >> Hname;
 
     mQuery.prepare("SELECT * FROM heroDB WHERE name = :name");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
 
     if(!mQuery.exec()){
-        std::cout << "Couldn't find the hero"           << std::endl;
-        std::cout << "Press enter to continue"          << std::endl;
+        std::cout << "Couldn't find the hero"                   << std::endl;
+        std::cout << "Press enter to continue .."               << std::endl;
+        std::cin.ignore();
+        std::cin.get();
         return false;
     }
 
-    include::cleanUp();
-    std::cout << "Welcome back"                         << std::endl;
-    std::cout << "to the legend of " << Hname           << std::endl;
 
     mQuery.prepare("SELECT * FROM heroDB WHERE name = :name");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
     mQuery.exec();
     if (!mQuery.next()){
-        std::cout << "Could't find the Hero you were looking for" << std::endl;
+        include::cleanUp();
+        std::cout << "Could't find a Hero of this name"         << std::endl;
         return false;
     }
 
+    include::cleanUp();
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
+    std::cout << " Welcome back to the legend of " << Hname     << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
+
     name        = mQuery.value(1).toString().toStdString();
     experience  = mQuery.value(2).toInt();
-    level       = mQuery.value(3).toInt();
-    hitPoints   = mQuery.value(4).toInt();
-    strength    = mQuery.value(5).toInt();
-    currentHP   = mQuery.value(6).toInt();
+    gold        = mQuery.value(3).toInt();
+    level       = mQuery.value(4).toInt();
+    hitPoints   = mQuery.value(5).toInt();
+    strength    = mQuery.value(6).toInt();
+    currentHP   = mQuery.value(7).toInt();
+    ring        = mQuery.value(8).toString().toStdString();
     return true;
 }
 
@@ -102,30 +116,30 @@ bool Hero::removeHero() {
     mQuery.exec("SELECT * FROM heroDB");
 
     if (!mQuery.next()) {
-        std::cout << "you have no heroes"               << std::endl;
+        std::cout << "you have no heroes"                       << std::endl;
         return false;
     }
 
-    std::cout << "Here are all of your heroes: "        << std::endl;
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<  "        << std::endl;
+    std::cout << "Here are all of your heroes: "                << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
     do {QString     Hname    = mQuery.value(1).toString();
         int         Hlevel   = mQuery.value(3).toInt();
 
-        std::cout << "Hero  :" << Hname.toStdString()   << std::endl;
-        std::cout << "Level :" << Hlevel                << std::endl;
-        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~"      << std::endl;
+        std::cout << "Hero  :" << Hname.toStdString()           << std::endl;
+        std::cout << "Level :" << Hlevel                        << std::endl;
+        std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
     } while (mQuery.next());
 
     std::string Hname;
-    std::cout << "Which one are you going to remove :"    << std::endl;
+    std::cout << "Which one are you going to remove :"          << std::endl;
     std::cin >> Hname;
 
     mQuery.prepare("SELECT * FROM heroDB WHERE name = :name");
     mQuery.bindValue(":name",   QString::fromStdString(Hname));
 
     if(!mQuery.exec()){
-        std::cout << "Couldn't find the hero"           << std::endl;
-        std::cout << "Press enter to continue"          << std::endl;
+        std::cout << "Couldn't find the hero"                   << std::endl;
+        std::cout << "Press enter to continue .."               << std::endl;
         std::cin.ignore();
         std::cin.get();
         return false;
@@ -139,57 +153,60 @@ bool Hero::removeHero() {
 }
 
 void Hero::printStats() {
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
-    std::cout << "                  Stats:                " << std::endl;
-    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<" << std::endl;
-    std::cout << "Name :        " << name                   << std::endl;
-    std::cout << "Experience :  " << experience             << std::endl;
-    std::cout << "Level :       " << level                  << std::endl;
-    std::cout << "Hit Points :  " << hitPoints              << std::endl;
-    std::cout << "Strength :    " << strength               << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
+    std::cout << "                  Stats:                "     << std::endl;
+    std::cout << "<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<"     << std::endl;
+    std::cout << "Name :        " << name                       << std::endl;
+    std::cout << "Experience :  " << experience                 << std::endl;
+    std::cout << "gold :        " << gold                       << std::endl;
+    std::cout << "Level :       " << level                      << std::endl;
+    std::cout << "Hit Points :  " << hitPoints                  << std::endl;
+    std::cout << "Strength :    " << strength                   << std::endl;
+    if (ring != "") {
+    std::cout << "ring :        " << ring                       << std::endl;
+    }
 }
 
 void Hero::printHP() {
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
-    std::cout << "HP: " << currentHP << "/" << hitPoints << std::endl;
-    //int amount = rint(;
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
+    std::cout << "HP: " << currentHP << "/" << hitPoints        << std::endl;
 
     switch ((currentHP *10) / hitPoints) {
         case 0:
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 1:
-    std::cout << "████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 2:
-    std::cout << "████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 3:
-    std::cout << "████████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████████~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 4:
-    std::cout << "████████████████~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████████████~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 5:
-    std::cout << "████████████████████~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████████████████~~~~~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 6:
-    std::cout << "████████████████████████~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████████████████████~~~~~~~~~~~~~~~~"     << std::endl;
     break;
         case 7:
-    std::cout << "████████████████████████████~~~~~~~~~~~~" << std::endl;
+    std::cout << "████████████████████████████~~~~~~~~~~~~"     << std::endl;
     break;
         case 8:
-    std::cout << "████████████████████████████████~~~~~~~~" << std::endl;
+    std::cout << "████████████████████████████████~~~~~~~~"     << std::endl;
     break;
         case 9:
-    std::cout << "████████████████████████████████████~~~~" << std::endl;
+    std::cout << "████████████████████████████████████~~~~"     << std::endl;
     break;
         case 10:
-    std::cout << "████████████████████████████████████████" << std::endl;
+    std::cout << "████████████████████████████████████████"     << std::endl;
     break;
             }
-    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" << std::endl;
+    std::cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~"     << std::endl;
 }
 
 void Hero::update() {
@@ -200,17 +217,19 @@ void Hero::update() {
         strength    += 1;
     }
 
-    mQuery.prepare("UPDATE heroDB SET xp = :xp, lvl = :lvl, hp = :hp, str = :str , chp = :chp WHERE name = :name");
+    mQuery.prepare("UPDATE heroDB SET xp = :xp, lvl = :lvl, hp = :hp, str = :str , chp = :chp, ring = :ring WHERE name = :name");
 
     mQuery.bindValue(":xp", experience);
     mQuery.bindValue(":lvl", level);
     mQuery.bindValue(":hp", hitPoints);
     mQuery.bindValue(":str", strength);
     mQuery.bindValue(":chp", currentHP);
+    mQuery.bindValue(":ring", QString::fromStdString(ring));
     mQuery.bindValue(":name", QString::fromStdString(name));
 
+
     if (!mQuery.exec()) {
-        std::cout << "didn't sucessfully update" << std::endl;
+        std::cout << "didn't sucessfully update"                << std::endl;
     }
 }
 
@@ -220,6 +239,54 @@ void Hero::rest() {
     if (currentHP > hitPoints) {
         currentHP = hitPoints;
     }
+}
+
+int Hero::ringPower(std::string opponentType) {
+    int in;
+    if (ring == ""){return 0;}
+    do {
+        std::cout << "Do you wanna youse your magic ring? (-25 mana)"   << std::endl;
+        std::cout << "0 <- Yes"                                         << std::endl;
+        std::cout << "1 <- No"                                          << std::endl;
+        std::cin >> in;
+    } while (in != 0 && in != 1);
+
+    if (in == 0){return 0;}
+    if (in == 1){
+        if (mana < 25) {
+            std::cout << "You dont have enough mana"                    << std::endl;
+            std::cout << "Press enter to continue .."                   << std::endl;
+            std::cin.ignore();
+            std::cin.get();
+            return 0;
+        }
+    }
+
+
+    if (ring == "Fire"){                    //Ring type FIRE
+        weak    = "Water";
+        strong  = "Metal";
+    }
+    else if (ring == "Earth"){              //Ring type EARTH
+        weak    = "Wood";
+        strong  = "Water";
+    }
+    else if (ring == "Metal"){              //Ring tyype METAL
+        weak    = "Fire";
+        strong  = "Wood";
+    }
+    else if (ring == "Water"){              //Ring type WATER
+        weak    = "Earth";
+        strong  = "Fire";
+    }
+    else if (ring == "Wood"){               //Ring type WOOD
+        weak    = "Metal";
+        strong  = "Earth";
+    }
+
+    if      (opponentType == weak)      {return 10;}
+    else if (opponentType == strong)    {return 40;}
+    else                                {return 20;}
 }
 
 void Hero::die() {

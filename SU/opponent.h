@@ -11,6 +11,7 @@ public:
     int         experience;
     int         hitPoints;
     int         strength;
+    std::string  element;
 
     int         currentHP;
 

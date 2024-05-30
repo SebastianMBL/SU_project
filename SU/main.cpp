@@ -11,7 +11,7 @@ int main()
     Dungeon dungeon;
 
     int input;
-    int temp;
+    std::string shopRing;
 
 
 //Start MENU//
@@ -75,6 +75,13 @@ int main()
                         std::cin >> input;
                     } while(input != 0);
 
+                    if (hero.ring != ""){
+                        include::cleanUp();
+                        include::battle();
+                        opponent.printStats();
+                        hero.ringPower(opponent.element);                            //Ring power
+                    }
+
                     do {
                         include::cleanUp();
                         include::battle();
@@ -115,7 +122,7 @@ int main()
                         std::cin.get();
                         return 0;
                     }
-                    break;
+                break;
 
                 case 1:
                     include::cleanUp();
@@ -125,6 +132,14 @@ int main()
 
                     for (int i = 0; i < dungeon.opponents; ++i) {
                         opponent.random();
+
+                        if (hero.ring != ""){
+                            include::cleanUp();
+                            include::battle();
+                            opponent.printStats();
+                            hero.ringPower(opponent.element);                            //Ring power
+                        }
+
                         do {
                             include::cleanUp();
                             include::dungeon();
@@ -168,19 +183,53 @@ int main()
                     }
                     hero.experience += dungeon.experience;
                     hero.update();
-                    break;
+                break;
 
                 case 2:
-                    hero.rest();
-                    break;
+                    include::cleanUp();
+                    include::shop();
+                    std::cin >> input;
 
-                case 3: //EXIT
+                        if      (input == 0) { shopRing = "Fire";}
+                        else if (input == 1) { shopRing = "Earth";}
+                        else if (input == 2) { shopRing = "Metal";}
+                        else if (input == 3) { shopRing = "Water";}
+                        else if (input == 4) { shopRing = "Wood";}
+
+                        if (input != 5 && hero.gold >= 10){ //Check if hero have enough gold
+                            hero.ring =     shopRing;
+                            hero.gold -=    10;
+                            hero.update();
+                            std::cout << "You have purchased a ring."          << std::endl;
+                            std::cout << "Press enter to continue .."          << std::endl;
+                            std::cin.ignore();
+                            std::cin.get();
+                        }
+                        else if (input != 5) {
+                            std::cout << "You dont have enough gold."          << std::endl;
+                            std::cout << "Press enter to continue .."          << std::endl;
+                            std::cin.ignore();
+                            std::cin.get();
+                        }
+
+                    input = 2;
+                break;
+
+                case 3:
+                    hero.rest();
+                break;
+
+                case 4: //EXIT
                     include::cleanUp();
                     std::cout << "Exiting the Story of Legends.."   << std::endl;
+                    hero.update();
                     return 0;
 
                 default:
-                    std::cout << "Not possible, try again"          << std::endl;
+                    std::cout << "Not possible, press enter .."          << std::endl;
+                    std::cin.ignore();
+                    std::cin.get();
+                break;
             }
         } while(input != 0 && input != 1 && input != 2);
     } while(true);

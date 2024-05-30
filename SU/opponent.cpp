@@ -7,13 +7,25 @@ Opponent::Opponent() {
                 "name       CHAR(100),"
                 "xp         INT,"
                 "hp         INT,"
-                "str        INT)");
+                "str        INT,"
+                "elem       CHAR(100))");
 
-    mQuery.exec("INSERT INTO opponentDB (name, xp, hp, str) VALUES "
-                "('Golem',      1100,   20,     1), "
-                "('Phoenix',    900,    8,      2), "
-                "('Hydra',      1500,   10,     3), "
-                "('Harpy',      600,    4,      2)");
+    mQuery.exec("INSERT INTO opponentDB (name, xp, hp, str, elem) VALUES "
+                "('Fire Golem',     600,    10,     2,      'Fire'), "
+                "('Phoenix',        900,    11,     4,      'Fire'), "
+                "('Dragon',         3000,   111,    6,      'Fire'), "
+                "('Earth Golem',    600,    20,     1,      'Earth'),"
+                "('Gargoyle',       800,    39,     2,      'Earth'),"
+                "('Giant',          1700,   82,     4,      'Earth'),"
+                "('Metal Golem',    600,    17,     1,      'Metal'),"
+                "('Alicanto',       1100,   22,     3,      'Metal'),"
+                "('Tombstone',      1800,   37,     7,      'Metal'),"
+                "('Water Golem',    600,    8,      2,      'Water'),"
+                "('Hydra',          1000,   18,     3,      'Water'),"
+                "('Kraken',         2100,   72,     5,      'Water'),"
+                "('Wood Golem',     600,    7,      2,      'Wood'),"
+                "('Troll',          1000,   44,     2,      'Wood'),"
+                "('Ent',            2600,   96,     5,      'Wood')");
 }
 
 Opponent::~Opponent() {
@@ -21,9 +33,13 @@ Opponent::~Opponent() {
 }
 
 void Opponent::random() {
-    std::string opponentNames[4] = {"Golem", "Phoenix", "Hydra", "Harpy"};
+    std::string opponentNames[15] = {"Fire Golem",   "Phoenix",  "Dragon",
+                                    "Earth Golem",  "Gargoyle", "Giant",
+                                    "Metal Golem",  "Alicanto", "Tombstone",
+                                    "Water Golem",  "Hydra",    "Kraken",
+                                    "Wood Golem",   "Troll",    "Ent"};
     std::random_device ranDev;
-    int opponentNr = ranDev() % 4; // 4 being the number of opponents possible, nr = [0 ..3]
+    int opponentNr = ranDev() % 15; // 15 being the number of opponents possible, nr = [0 ..14]
 
     mQuery.prepare("SELECT * FROM opponentDB WHERE name = :name");
     mQuery.bindValue(":name",   QString::fromStdString(opponentNames[opponentNr]));
@@ -34,6 +50,7 @@ void Opponent::random() {
     experience  = mQuery.value(2).toInt();
     hitPoints   = mQuery.value(3).toInt();
     strength    = mQuery.value(4).toInt();
+    element     = mQuery.value(5).toString().toStdString();
 
     currentHP   = hitPoints;
 }
@@ -48,6 +65,7 @@ void Opponent::load(std::string opponentName) {
     experience  = mQuery.value(2).toInt();
     hitPoints   = mQuery.value(3).toInt();
     strength    = mQuery.value(4).toInt();
+    element     = mQuery.value(5).toString().toStdString();
 
     currentHP   = hitPoints;
 }
@@ -60,6 +78,7 @@ void Opponent::printStats(){
     std::cout << "Experience :  " << experience             << std::endl;
     std::cout << "Hit Points :  " << hitPoints              << std::endl;
     std::cout << "Strength :    " << strength               << std::endl;
+    std::cout << "Element :     " << element                << std::endl;
 }
 
 void Opponent::printHP() {
